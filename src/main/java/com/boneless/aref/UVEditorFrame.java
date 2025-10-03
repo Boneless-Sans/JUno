@@ -1,4 +1,4 @@
-package com.boneless.ref;
+package com.boneless.aref;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

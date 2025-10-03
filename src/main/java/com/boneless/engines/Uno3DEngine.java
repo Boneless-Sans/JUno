@@ -1,4 +1,4 @@
-package com.boneless.util;
+package com.boneless.engines;
 
 import javax.swing.*;
 

@@ -3,6 +3,12 @@ package com.boneless;
 import java.util.*;
 
 public class GameLogic {
+    private Card topOfDiscard;    // just the top card
+    private Color activeColor;    // current active color
+    private int pendingDrawCount; // handles stacking +2 / +4
+    private boolean clockwise = true;
+    private int currentPlayer = 0;
+
     enum Color { RED(0), YELLOW(1), GREEN(2), BLUE(3), WILD(4);
 
         private final int value;
@@ -14,6 +20,11 @@ public class GameLogic {
         public int getColor(){
             return value;
         }
+
+        public Color getColorEnum(){
+            return Color.fromValue(value);
+        }
+
         private static final Color[] BY_VALUE = values();
         public static Color fromValue(int v) {
             if (v < 0 || v >= BY_VALUE.length) throw new IllegalArgumentException("bad color:" + v);
@@ -27,9 +38,18 @@ public class GameLogic {
             this.value = value;
         }
 
-        public int getValue(){
+        public int getRank(){
             return value;
         }
+
+        public Rank getRankEnum(){
+            return Rank.fromValue(value);
+        }
+
+        public boolean isWild() {
+            return this == WILD || this == WILD_DRAW_FOUR;
+        }
+
         private static final Rank[] BY_VALUE = values();
         public static Rank fromValue(int v) {
             if (v < 0 || v >= BY_VALUE.length) throw new IllegalArgumentException("bad rank:" + v);
@@ -98,5 +118,31 @@ public class GameLogic {
         }
     }
 
+    public void startDiscord(){
+        Card firstDiscardCard = drawRandomCard();
+        while (firstDiscardCard.rank() == Rank.WILD_DRAW_FOUR || firstDiscardCard.rank() == Rank.WILD){
+            firstDiscardCard = drawRandomCard();
+        }
+        discardPile.push(firstDiscardCard);
+        activeColor = firstDiscardCard.color();
+    }
+
+    public void playCard(int playerIndex, Card card){
+        hands.get(playerIndex).remove(card);
+
+        topOfDiscard = card;
+
+        if(!card.rank().isWild()){
+            activeColor = card.color();
+        } else {
+            activeColor = null;
+        }
+
+        if(card.rank() == Rank.DRAW_TWO){
+            pendingDrawCount =+ 2;
+        } else if (card.rank() == Rank.WILD_DRAW_FOUR) {
+            pendingDrawCount =+ 4;
+        }
+    }
 }
 

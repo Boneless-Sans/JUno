@@ -4,8 +4,29 @@ import java.awt.image.ComponentColorModel;
 import java.util.*;
 
 public class GameLogic {
-    enum Color { RED, YELLOW, GREEN, BLUE, WILD }
-    enum Rank  { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, SKIP, REVERSE, DRAW_TWO, WILD, WILD_DRAW_FOUR }
+    enum Color { RED(0), YELLOW(1), GREEN(2), BLUE(3), WILD(4);
+
+        private final int value;
+
+        Color(int value) {
+            this.value = value;
+        }
+
+        public int getValue(){
+            return value;
+        }
+    }
+    enum Rank  { ZERO(0), ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9), SKIP(10), REVERSE(11), DRAW_TWO(12), WILD(13), WILD_DRAW_FOUR(14)
+    private final int value;
+
+        Rank(int value){
+            this.value = value;
+        }
+
+        public int getValue(){
+            return value;
+        }
+    }
     enum Phase { AWAITING_START, TURN_PLAY_OR_DRAW, GAME_OVER }
 
     record Card(Color color, Rank rank) {}
@@ -22,34 +43,8 @@ public class GameLogic {
         }
     }
 
-    private List<Card> buildDeck(){
-        List<Card> deck = new ArrayList<>();
+    public getColor {}{
 
-        for(Color c : List.of(Color.RED, Color.YELLOW, Color.GREEN, Color.BLUE, Color.WILD)){
-            deck.add(new Card(c, Rank.ZERO));
-
-            for(int i = 0; i < 2; i++){
-                deck.add(new Card(c, Rank.ONE));
-                deck.add(new Card(c, Rank.TWO));
-                deck.add(new Card(c, Rank.THREE));
-                deck.add(new Card(c, Rank.FOUR));
-                deck.add(new Card(c, Rank.FIVE));
-                deck.add(new Card(c, Rank.SIX));
-                deck.add(new Card(c, Rank.SEVEN));
-                deck.add(new Card(c, Rank.EIGHT));
-                deck.add(new Card(c, Rank.NINE));
-                deck.add(new Card(c, Rank.SKIP));
-                deck.add(new Card(c, Rank.REVERSE));
-                deck.add(new Card(c, Rank.DRAW_TWO));
-                }
-            }
-
-        for(int i = 0; i < 4; i++){
-            deck.add(new Card(Color.WILD, Rank.WILD));
-            deck.add(new Card(Color.WILD, Rank.WILD_DRAW_FOUR));
-        }
-
-        return deck;
     }
 
 

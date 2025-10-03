@@ -2,42 +2,33 @@ package com.boneless;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Card extends JPanel {
+    public static final int SKIP = 10;
+    public static final int REVERSE = 11;
+    public static final int PLUS2 = 12;
+    public static final int WILD = 13;
+    public static final int PLUS4 = 14;
 
-    /*
-    0-9 normal cards
-    10 skip
-    11 reverse
-    12 plus 2
-    13 wild
-    14 plus 4
-     */
 
-    private final String color;
+    private final Color color;
     private final int number;
 
     public Card() {
         Random rand = new Random();
         number = rand.nextInt(15);
 
-        color = switch (rand.nextInt(4)) {
-            case 0 -> "green";
-            case 1 -> "blue";
-            case 2 -> "yellow";
-            default-> "red";
-        };
+        rand.nextInt(4);
+        color = Color.CYAN;
     }
 
-    public Card(String color, int number) {
+    public Card(Color color, int number) {
         this.color = color;
         this.number = number;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
     public int getNumber() {

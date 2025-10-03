@@ -8,6 +8,8 @@ import com.boneless.engines.Uno2DEngine;
 import com.boneless.engines.Uno3DEngine;
 
 public class Main extends JFrame {
+    public static GameLogic GAME;
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Main::new);
     }
@@ -17,16 +19,6 @@ public class Main extends JFrame {
         //setSize(300, 400);
         setSize(1920, 1080);
         setLocationRelativeTo(null);
-
-//        try {
-//            if(System.getProperty("os.name").equalsIgnoreCase("windows")) {
-//                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-//            } else {
-//                UIManager.setLookAndFeel(UIManager.getLookAndFeel());
-//            }
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
 
         //pickRenderer();
         add(new Uno2DEngine());

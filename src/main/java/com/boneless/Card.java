@@ -24,12 +24,11 @@ public class Card extends JPanel {
         Random rand = new Random();
         number = rand.nextInt(15);
 
-        color = switch (rand.nextInt(5)) {
+        color = switch (rand.nextInt(4)) {
             case 0 -> "green";
             case 1 -> "blue";
             case 2 -> "yellow";
-            case 3 -> "red";
-            default -> "black";
+            default-> "red";
         };
     }
 

@@ -6,6 +6,7 @@ import com.boneless.GameLogic;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 public class Uno2DEngine extends JPanel{
@@ -78,6 +79,17 @@ public class Uno2DEngine extends JPanel{
             int y = 30;
             g2d.drawString(String.valueOf(number), x, y);
 
+            //draw bottom right text
+            int panelWidth = getWidth();
+            int panelHeight = getHeight();
+            int x2 = panelWidth - 30;
+            int y2 = panelHeight - 35;
+
+            AffineTransform oldRotation = g2d.getTransform();
+            g2d.rotate(Math.PI, x2, y2);
+
+            g2d.drawString(String.valueOf(number), x2 - textWidth, y2);
+            g2d.setTransform(oldRotation);
         }
     }
 

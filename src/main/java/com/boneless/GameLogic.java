@@ -123,7 +123,7 @@ public class GameLogic {
         while (firstDiscardCard.rank() == Rank.WILD_DRAW_FOUR || firstDiscardCard.rank() == Rank.WILD){
             firstDiscardCard = drawRandomCard();
         }
-        discardPile.push(firstDiscardCard);
+        topOfDiscard = firstDiscardCard;
         activeColor = firstDiscardCard.color();
     }
 

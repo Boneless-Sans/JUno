@@ -1,6 +1,7 @@
 package com.boneless.engines;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Uno3DEngine extends JPanel {
 
@@ -13,6 +14,6 @@ public class Uno3DEngine extends JPanel {
     private Vec3 camRot = new Vec3(0, 0, 0);
 
     public Uno3DEngine() {
-
+        setBackground(Color.red);
     }
 }

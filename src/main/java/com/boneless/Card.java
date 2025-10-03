@@ -1,6 +1,8 @@
 package com.boneless;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Card extends JPanel {
@@ -9,22 +11,24 @@ public class Card extends JPanel {
     0-9 normal cards
     10 skip
     11 reverse
-    12 wild
-    13 plus 4
-    14 plus 2
+    12 plus 2
+    13 wild
+    14 plus 4
      */
 
     private final String color;
     private final int number;
 
-    public Card() {
+    public Card() { //todo: maybe have the renderer and logic handle special cards
         Random rand = new Random();
-        number = rand.nextInt(11);
-        color = switch (rand.nextInt(4)) {
+        number = rand.nextInt(15);
+
+        color = switch (rand.nextInt(5)) {
             case 0 -> "green";
             case 1 -> "blue";
             case 2 -> "yellow";
-            default -> "red";
+            case 3 -> "red";
+            default -> "black";
         };
     }
 

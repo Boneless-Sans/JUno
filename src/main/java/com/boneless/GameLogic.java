@@ -25,6 +25,26 @@ public class GameLogic {
 //        void onStateChanged(Snapshot snap);
 //    }
 
+//    Snapshot snap = new Snapshot(
+//            gameId = 123e4567-e89b-12d3-a456-426614174000,  // unique game session id
+//
+//            phase = Phase.TURN_PLAY_OR_DRAW,                // we are in normal play mode
+//            currentPlayerIndex = 1,                         // it’s Player 1’s turn
+//
+//            handSizes = [5, 7, 2],                          // Player 0 has 5, Player 1 has 7, Player 2 has 2
+//    topOfDiscard = new Card(Color.BLUE, Rank.DRAW_TWO),   // card on the table is Blue +2
+//    activeColor = Color.BLUE,                       // must follow BLUE unless stacking +2
+//
+//    pendingDrawCount = 2,                           // Player 1 must draw 2 if they can’t stack
+//    clockwise = false,                              // play order is counterclockwise
+//
+//    legalMovesForCurrent = [ new Card(Color.BLUE, Rank.FIVE),
+//                             new Card(Color.WILD, Rank.WILD_DRAW_FOUR) ],
+//    // Player 1 has only these legal plays right now
+//
+//    winnerIndex = -1                                // no winner yet
+//            );
+
     void createPlayerCount(int players){
 
     }

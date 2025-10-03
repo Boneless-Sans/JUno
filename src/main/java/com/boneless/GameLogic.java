@@ -8,6 +8,9 @@ public class GameLogic {
     private int pendingDrawCount; // handles stacking +2 / +4
     private boolean clockwise = true;
     private int currentPlayer = 0;
+    private Phase phase = Phase.AWAITING_START;
+    private int winnerIndex = -1;
+
 
     enum Color { RED(0), YELLOW(1), GREEN(2), BLUE(3), WILD(4);
 
@@ -118,7 +121,7 @@ public class GameLogic {
         }
     }
 
-    public void startDiscord(){
+    public void startDiscard(){
         Card firstDiscardCard = drawRandomCard();
         while (firstDiscardCard.rank() == Rank.WILD_DRAW_FOUR || firstDiscardCard.rank() == Rank.WILD){
             firstDiscardCard = drawRandomCard();
@@ -143,6 +146,17 @@ public class GameLogic {
         } else if (card.rank() == Rank.WILD_DRAW_FOUR) {
             pendingDrawCount =+ 4;
         }
+    }
+
+    public void startGame(int playerCount) {
+        createPlayers(playerCount);
+        dealStartingHands(7);
+        startDiscard();
+        currentPlayer = 0;
+        clockwise = true;
+        pendingDrawCount = 0;
+        winnerIndex = -1;
+        phase = Phase.TURN_PLAY_OR_DRAW;
     }
 }
 

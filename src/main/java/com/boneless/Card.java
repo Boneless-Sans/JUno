@@ -1,6 +1,7 @@
 package com.boneless;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -19,7 +20,7 @@ public class Card extends JPanel {
     private final String color;
     private final int number;
 
-    public Card() { //todo: maybe have the renderer and logic handle special cards
+    public Card() {
         Random rand = new Random();
         number = rand.nextInt(15);
 

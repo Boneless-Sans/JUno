@@ -14,7 +14,8 @@ public class Main extends JFrame {
 
     public Main() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 400);
+        //setSize(300, 400);
+        setSize(1920, 1080);
         setLocationRelativeTo(null);
 
 //        try {
@@ -27,7 +28,8 @@ public class Main extends JFrame {
 //            throw new RuntimeException(e);
 //        }
 
-        pickRenderer();
+        //pickRenderer();
+        add(new Uno2DEngine());
 
         setVisible(true);
     }
